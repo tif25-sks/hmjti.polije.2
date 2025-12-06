@@ -14,7 +14,16 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Orbitron:wght@400;700&display=swap"
         rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Orbitron:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
 
     <style>
         * {
@@ -31,6 +40,7 @@
             --text-light: #ffffff;
             --text-gray: #666666;
             --shadow: 0 4px 22px rgba(0, 0, 0, 0.25);
+            --transition: all 0.3s ease;
         }
 
         html {
@@ -42,6 +52,7 @@
             line-height: 1.6;
             color: var(--text-dark);
             overflow-x: hidden;
+            background-color: var(--light-bg);
         }
 
         /* Navigation */
@@ -50,9 +61,9 @@
             top: 0;
             left: 0;
             right: 0;
-            background: white;
+            background: var(--light-bg);
             z-index: 1000;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
@@ -67,7 +78,7 @@
             margin: 0 auto;
             display: flex;
             align-items: center;
-            gap: 290px;
+            justify-content: space-between;
             padding: 8px 32px;
         }
 
@@ -85,7 +96,8 @@
 
         .logo-text {
             font-family: 'Orbitron', sans-serif;
-            font-size: 24px;
+            font-size: 1.5rem;
+            /* 24px */
             color: var(--text-dark);
             font-weight: 300;
         }
@@ -96,6 +108,8 @@
             gap: 20px;
             list-style: none;
             flex: 1;
+            justify-content: flex-end;
+            transition: var(--transition);
         }
 
         .nav-item {
@@ -105,10 +119,11 @@
         .nav-link {
             text-decoration: none;
             color: var(--text-dark);
-            font-size: 20px;
+            font-size: 1.25rem;
+            /* 20px */
             padding: 10px 20px;
             border-radius: 200px;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             display: inline-block;
         }
 
@@ -119,287 +134,151 @@
 
         .nav-link.active {
             background: var(--primary-blue);
-            color: white;
+            color: var(--text-light);
         }
 
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-toggle {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        /* Burger Menu */
+        .burger {
+            display: none;
+            font-size: 1.75rem;
+            /* 28px */
             cursor: pointer;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: background 0.3s;
+            color: var(--text-dark);
+            transition: var(--transition);
         }
 
-        .dropdown-toggle:hover {
-            background: #f0f0f0;
+        .burger:hover {
+            color: var(--primary-blue);
         }
 
-        .dropdown-arrow {
-            width: 0;
-            height: 0;
-            border-left: 6px solid transparent;
-            border-right: 6px solid transparent;
-            border-top: 6px solid var(--text-dark);
-            transition: transform 0.3s;
-        }
-
-        .dropdown.active .dropdown-arrow {
-            transform: rotate(180deg);
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            min-width: 200px;
-            padding: 10px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-        }
-
-        .dropdown.active .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(5px);
-        }
-
-        .dropdown-item {
-            padding: 12px 16px;
-            border-radius: 5px;
-            transition: background 0.3s;
-            cursor: pointer;
-        }
-
-        .dropdown-item:hover {
-            background: #f0f0f0;
-        }
 
 
         /* Hero Section */
-        .hero {
-            position: relative;
-            height: 150vh;
-            overflow: hidden;
-            margin-top: 10px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-
-
-        /* Header Section */
-        .header-box {
-            position: absolute;
-            left: 32px;
-            top: 117px;
-            width: 1345px;
-            height: 268px;
-            background-color: white;
+        .hero-section {
+            margin: 32px;
+            margin-top: 100px;
+            padding: 40px 57px;
+            background-color: #ffffff;
             border-radius: 17px;
             box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25);
-            padding: 21px 57px;
         }
 
-        .header-title {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
+        .hero-title {
             font-size: 48px;
-            color: #000;
-            margin-bottom: 12px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #000000;
         }
 
-        .header-description {
-            font-family: 'Poppins', sans-serif;
+        .hero-description {
             font-size: 24px;
-            line-height: 1.5;
-            color: #000;
+            line-height: 1.6;
+            color: #000000;
+            max-width: 1117px;
         }
 
-        .header-description a {
-            color: #000;
+        .hero-description a {
+            color: #2a85fb;
             text-decoration: underline;
         }
 
-        /* Profile Cards */
-        .profile-card {
-            position: absolute;
-            width: 400px;
-            height: 490px;
-            background-color: white;
-            border-radius: 30px;
+        /* Cards Container */
+        .cards-container {
+            padding: 40px 32px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 30px;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        /* Program Card */
+        .program-card {
+            background-color: #ffffff;
+            border-radius: 50px;
             box-shadow: 3px 4px 3.3px 6px rgba(0, 0, 0, 0.25);
             overflow: hidden;
+            position: relative;
+            height: 427px;
         }
 
-        .card-1 {
-            left: 47px;
-            top: 459px;
-        }
-
-        .card-2 {
-            left: 512px;
-            top: 459px;
-        }
-
-        .card-image-wrapper {
-            position: absolute;
-            left: -7px;
-            top: -29px;
-            width: 428px;
-            height: 534px;
+        .card-image-container {
+            position: relative;
+            height: 360px;
             border-radius: 13px;
-            box-shadow: 9px 0px 4px 0px rgba(0, 0, 0, 0.25);
             overflow: hidden;
         }
 
         .card-image {
-            width: 100%;
-            height: 100%;
+            width: 102%;
+            height: 90%;
             object-fit: cover;
-            filter: brightness(0.7);
         }
 
         .card-overlay {
             position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%);
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 50px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
         }
 
         .card-title {
-            position: absolute;
-            left: 12px;
-            top: 341px;
             font-family: 'Roboto', sans-serif;
-            font-weight: 900;
             font-size: 36px;
-            color: white;
-            line-height: 1;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 5px;
         }
 
         .card-subtitle {
-            position: absolute;
-            left: 19px;
-            top: 379px;
             font-family: 'Roboto', sans-serif;
-            font-weight: 600;
             font-size: 16px;
-            color: white;
+            font-weight: 600;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background-color: rgba(0, 87, 255, 0.5);
+            color: #ffffff;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: 600;
+            font-family: 'Roboto', sans-serif;
         }
 
         .verified-badge {
             position: absolute;
+            top: 345px;
             left: 26px;
-            top: 805px;
             background-color: rgba(0, 87, 255, 0.5);
-            border-radius: 10px;
+            color: #ffffff;
             padding: 3px 10px;
-        }
-
-        .verified-badge span {
-            font-family: 'Roboto', sans-serif;
-            font-weight: 600;
+            border-radius: 10px;
             font-size: 20px;
-            color: white;
+            font-weight: 600;
+            font-family: 'Roboto', sans-serif;
         }
 
-        .verified-icon {
+        .card-button {
             position: absolute;
-            right: 270px;
-            top: 72.6%;
-            width: 18px;
-            height: 19px;
-        }
-
-        .card-info-bg {
-            position: absolute;
+            bottom: 0;
             left: 0;
-            top: 554px;
-            width: 512px;
-            height: 554px;
-            background-color: white;
-        }
-
-        .card-description {
-            position: absolute;
-            left: 26px;
-            top: 639px;
-            width: 486px;
-            font-family: 'Roboto', sans-serif;
-            font-weight: 600;
-            font-size: 30px;
-            line-height: 1.3;
-            color: rgba(0, 0, 0, 0.5);
-        }
-
-        .card-level {
-            position: absolute;
-            left: 219px;
-            top: 797px;
-            font-family: 'Roboto', sans-serif;
-            font-weight: 600;
-            color: rgba(129, 129, 129, 0.5);
-        }
-
-        .card-level .divider {
-            font-size: 36px;
-        }
-
-        .card-level .text {
-            font-size: 28px;
-        }
-
-        .card-price-label {
-            position: absolute;
-            left: 227px;
-            top: 881px;
-            font-family: 'Roboto', sans-serif;
-            font-weight: 600;
-            font-size: 28px;
-            color: rgba(129, 129, 129, 0.5);
-            white-space: nowrap;
-        }
-
-        .card-price {
-            position: absolute;
-            left: 349px;
-            top: 923px;
-            font-family: 'Roboto', sans-serif;
-            font-weight: 600;
-            font-size: 42px;
-            color: rgba(6, 6, 6, 0.5);
-        }
-
-        .show-more-btn {
-            position: absolute;
-            left: 0;
-            top: 414px;
-            width: 421px;
-            height: 77px;
+            right: 0;
             background-color: #2a85fb;
-            border: none;
-            font-family: 'Roboto', sans-serif;
-            font-weight: 700;
-            font-size: 30px;
-            color: white;
+            color: #ffffff;
+            padding: 30px;
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
-        .show-more-btn:hover {
-            background-color: #1a6fdb;
+        .card-button:hover {
+            background-color: #1a75eb;
         }
 
         /* Footer */
@@ -644,20 +523,25 @@
         /* Responsive */
         @media (max-width: 1024px) {
             .nav-menu {
-                gap: 10px;
+                gap: 15px;
             }
 
             .nav-link {
-                font-size: 18px;
+                font-size: 1.125rem;
+                /* 18px */
                 padding: 8px 15px;
             }
 
-            .hero-title {
-                font-size: 48px;
+            .cards-container {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             }
 
-            .about-grid {
-                grid-template-columns: 1fr;
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .hero-description {
+                font-size: 20px;
             }
 
             .footer-grid {
@@ -667,8 +551,46 @@
 
         @media (max-width: 768px) {
             .nav-container {
-                flex-wrap: wrap;
-                gap: 20px;
+                padding: 8px 20px;
+            }
+
+            .logo-text {
+                font-size: 1.25rem;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 74px;
+                /* Adjust based on navbar height */
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 74px);
+                background: var(--light-bg);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 30px;
+                padding: 50px 20px;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+                overflow-y: auto;
+            }
+
+            .nav-menu.active {
+                transform: translateX(0);
+            }
+
+            .nav-link {
+                font-size: 1.5rem;
+                padding: 15px 30px;
+                width: 100%;
+                text-align: center;
+                border-radius: 10px;
+            }
+
+            .burger {
+                display: block;
             }
 
             .hero-title {
@@ -708,6 +630,91 @@
             .proker-grid {
                 grid-template-columns: 1fr;
             }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .program-card {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 8px 15px;
+            }
+
+            .logo-text {
+                font-size: 1rem;
+            }
+
+            .nav-menu {
+                top: 66px;
+                /* Adjust based on navbar height */
+                height: calc(100vh - 66px);
+                padding: 30px 15px;
+                gap: 20px;
+            }
+
+            .nav-link {
+                font-size: 1.25rem;
+                padding: 12px 20px;
+            }
+
+            .header-box {
+                margin: 10px;
+                /* Kurangi margin untuk HP kecil */
+                padding: 15px 20px;
+                margin-top: 80px;
+            }
+
+            .hero-section {
+                margin: 20px;
+                margin-top: 100px;
+                padding: 30px 20px;
+            }
+
+            .hero-title {
+                font-size: 28px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            footer {
+                text-align: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .footer-top-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .card-overlay {
+                background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.6) 100%);
+                /* Lebih gelap lagi untuk HP kecil */
+            }
+        }
+
+        .verified-icon {
+            position: absolute;
+            right: 266px;
+            top: 28.6%;
+            width: 28px;
+            height: 24px;
         }
     </style>
 </head>
@@ -720,7 +727,10 @@
                 <img src="img/1.png" alt="Logo HMJ TI" class="logo-img">
                 <span class="logo-text">HMJ-TI</span>
             </div>
-            <ul class="nav-menu">
+            <button id="burger" class="burger" type="button">
+                <i class="ph ph-list"></i>
+            </button>
+            <ul id="nav-menu" class="nav-menu">
                 <li class="nav-item">
                     <a href="index.html" class="nav-link" data-section="home">Beranda</a>
                 </li>
@@ -743,58 +753,64 @@
         </div>
     </nav>
 
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+
+
 
     <!--  -->
-    <section class="hero">
-        <!-- Header Section -->
-        <div class="header-box">
-            <h1 class="header-title">Program Kerja</h1>
-            <p class="header-description">
-                Proker adalah singkatan dari <a href="https://www.google.com/search?q=Program+Kerja"
-                    target="_blank">Program Kerja,</a> yaitu sebuah rencana atau daftar kegiatan yang dirancang oleh
-                organisasi, kelompok, atau perusahaan untuk mencapai tujuan tertentu dalam jangka waktu tertentu
-            </p>
-        </div>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1 class="hero-title">Program Kerja</h1>
+        <p class="hero-description">
+            Proker adalah singkatan dari <a href="#" target="_blank">Program Kerja</a>, yaitu sebuah rencana atau daftar
+            kegiatan yang dirancang oleh organisasi, kelompok, atau perusahaan untuk mencapai tujuan tertentu dalam
+            jangka waktu tertentu
+        </p>
+    </section>
 
-        <!-- Profile Cards -->
-        <!-- Card 1 -->
-        <div class="profile-card card-1">
-            <div class="card-info-bg"></div>
-            <div class="card-image-wrapper">
-                <img src="img/s1.png" alt="Yoga Instructor" class="card-image">
-                <div class="card-overlay"></div>
-            </div>
-            <div class="card-title">AOM</div>
-            <div class="card-subtitle">Art of Manunggalan</div>
-            <svg class="verified-icon" viewBox="0 0 19 20" fill="none">
-                <path d="M18.0898 9.72924L16.0835 7.14404L16.3631 3.72491L13.3947 
+    <!-- Cards Container -->
+    <div class="cards-container">
+        <!-- Program Card 1 -->
+        <div class="program-card">
+            <div class="card-image-container">
+                <img src="img/s1.png" alt="AOM Program" class="card-image">
+                <div class="card-overlay">
+                    <div class="card-title">AOM</div>
+                    <div class="card-subtitle">Art of Manunggalan</div>
+                    <svg class="verified-icon" viewBox="0 0 19 20" fill="none">
+                        <path d="M18.0898 9.72924L16.0835 7.14404L16.3631 3.72491L13.3947 
                     2.9651L11.8406 0L9.04492 1.35283L6.24922 0L4.69514 2.95584L1.72676
                      3.70638L2.00633 7.13478L0 9.72924L2.00633 12.3144L1.72676 15.7428L4.69514
                       16.5026L6.24922 19.4585L9.04492 18.0964L11.8406 19.4492L13.3947 16.4934L16.3631
                        15.7336L16.0835 12.3144L18.0898 9.72924ZM7.47439 14.1028L4.34979 10.5724L5.56674 
                        9.20108L7.47439 11.36L12.2846 5.92094L13.5016 7.2923L7.47439 14.1028Z" fill="#0057FF" />
-            </svg>
-            <button class="show-more-btn" data-url="showproker.html">Show More</button>
-
-        </div>
-
-        <div class="profile-card card-2">
-            <div class="card-info-bg"></div>
-            <div class="card-image-wrapper">
-                <img src="img/epim.png" alt="Yoga Instructor" class="card-image">
-                <div class="card-overlay"></div>
+                    </svg>
+                </div>
             </div>
-            <div class="card-title">EPIM</div>
-            <div class="card-subtitle">Expo Pekan Ilmiah Mahasiswa</div>
-            <svg class="verified-icon" viewBox="0 0 19 20" fill="none">
-                <path
-                    d="M18.0898 9.72924L16.0835 7.14404L16.3631 3.72491L13.3947 2.9651L11.8406 0L9.04492 1.35283L6.24922 0L4.69514 2.95584L1.72676 3.70638L2.00633 7.13478L0 9.72924L2.00633 12.3144L1.72676 15.7428L4.69514 16.5026L6.24922 19.4585L9.04492 18.0964L11.8406 19.4492L13.3947 16.4934L16.3631 15.7336L16.0835 12.3144L18.0898 9.72924ZM7.47439 14.1028L4.34979 10.5724L5.56674 9.20108L7.47439 11.36L12.2846 5.92094L13.5016 7.2923L7.47439 14.1028Z"
-                    fill="#0057FF" />
-            </svg>
-            <button class="show-more-btn" data-url="showproker1.html">Show More</button>
+            <button class="card-button" data-url="showproker.html">Show More</button>
         </div>
 
-    </section>
+        <!-- Program Card 2 -->
+        <div class="program-card">
+            <div class="card-image-container">
+                <img src="img/epim.png" alt="AOM Program" class="card-image">
+                <div class="card-overlay">
+                    <div class="card-title">EPIM</div>
+                    <div class="card-subtitle">Expo pekan Ilmiah Mahasiswa</div>
+                    <svg class="verified-icon" viewBox="0 0 19 20" fill="none">
+                        <path d="M18.0898 9.72924L16.0835 7.14404L16.3631 3.72491L13.3947 
+                    2.9651L11.8406 0L9.04492 1.35283L6.24922 0L4.69514 2.95584L1.72676
+                     3.70638L2.00633 7.13478L0 9.72924L2.00633 12.3144L1.72676 15.7428L4.69514
+                      16.5026L6.24922 19.4585L9.04492 18.0964L11.8406 19.4492L13.3947 16.4934L16.3631
+                       15.7336L16.0835 12.3144L18.0898 9.72924ZM7.47439 14.1028L4.34979 10.5724L5.56674 
+                       9.20108L7.47439 11.36L12.2846 5.92094L13.5016 7.2923L7.47439 14.1028Z" fill="#0057FF" />
+                    </svg>
+                </div>
+            </div>
+            <button class="card-button" data-url="showproker1.html">Show More</button>
+        </div>
+    </div>
     <!--  -->
 
     <!-- Footer -->
@@ -943,26 +959,27 @@
             });
         });
 
-        // Dropdown functionality
-        const dropdown = document.querySelector('.dropdown');
-        const dropdownToggle = document.querySelector('.dropdown-toggle');
-
-        dropdownToggle.addEventListener('click', () => {
-            dropdown.classList.toggle('active');
+        // burger menu toggle
+        const burger = document.getElementById('burger');
+        const navMenu = document.getElementById('nav-menu');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        burger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');  // Ubah dari 'nav-active' ke 'active' agar sesuai CSS
+            mobileOverlay.classList.toggle('active');
+            burger.classList.toggle('active');  // Tambahkan efek pada burger sendiri
+        });
+        // Close mobile menu when clicking overlay
+        mobileOverlay.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            burger.classList.remove('active');
         });
 
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!dropdown.contains(e.target)) {
-                dropdown.classList.remove('active');
-            }
-        });
 
         // Show More button click handler
-        document.querySelectorAll('.show-more-btn').forEach(btn => {
+        document.querySelectorAll('.card-button').forEach(btn => {
             btn.addEventListener('click', function () {
                 const targetPage = this.dataset.url;
-                alert('Detail program kerja akan ditampilkan');
                 window.location.href = targetPage;
             });
         });

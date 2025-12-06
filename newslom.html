@@ -21,6 +21,14 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Orbitron:wght@400;700&display=swap"
         rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Orbitron:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
 
     <style>
         * {
@@ -50,8 +58,8 @@
             overflow-x: hidden;
         }
 
-        /* Navigation */
-        .navbarr {
+        /* CSS untuk Navbar - Gunakan selector spesifik untuk menghindari konflik dengan Bootstrap */
+        #navbar.navbar {
             position: fixed;
             top: 0;
             left: 0;
@@ -60,196 +68,124 @@
             z-index: 1000;
             transition: all 0.3s ease;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            /* Override Bootstrap jika ada */
+            border: none;
+            border-radius: 0;
         }
 
-        .navbar.scrolled {
+        #navbar.navbar.scrolled {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
 
-        .nav-containerr {
+        #navbar .nav-container {
             max-width: 1440px;
             margin: 0 auto;
             display: flex;
             align-items: center;
-            gap: 200px;
+            justify-content: space-between;
             padding: 8px 32px;
+            gap: 390px;
+            /* Override Bootstrap */
+            flex-wrap: nowrap;
         }
 
-        .logo-containerr {
+        #navbar .logo-container {
             display: flex;
             align-items: center;
             gap: 15px;
         }
 
-        .logo-img {
+        #navbar .logo-img {
             width: 42px;
             height: 58px;
             object-fit: contain;
         }
 
-        .logo-text {
+        #navbar .logo-text {
             font-family: 'Orbitron', sans-serif;
-            font-size: 24px;
-            color: var(--text-dark);
+            font-size: 1.5rem;
+            color: #000;
             font-weight: 300;
         }
 
-        .nav-menu {
+        #navbar .nav-menu {
             display: flex;
             align-items: center;
             gap: 20px;
             list-style: none;
             flex: 1;
+            justify-content: flex-end;
+            transition: all 0.3s ease;
+            /* Override Bootstrap nav */
+            margin: 0;
+            padding: 0;
         }
 
-        .nav-item {
+        #navbar .nav-item {
             position: relative;
+            /* Override Bootstrap li */
+            margin: 0;
         }
 
-        .nav-link {
+        #navbar .nav-link {
             text-decoration: none;
-            color: var(--text-dark);
-            font-size: 20px;
+            color: #000;
+            font-size: 1.25rem;
             padding: 10px 20px;
             border-radius: 200px;
             transition: all 0.3s ease;
             display: inline-block;
+            /* Override Bootstrap link */
+            background: none;
+            border: none;
         }
 
-        .nav-link:hover {
+        #navbar .nav-link:hover {
             background: #f0f0f0;
             transform: scale(1.05);
         }
 
-        .nav-link.active {
-            background: var(--primary-blue);
+        #navbar .nav-link.active {
+            background: #2a85fb;
             color: white;
         }
 
-        .dropdown {
-            position: relative;
-        }
-
-        /* Hilangkan arrow bawaan Bootstrap */
-        .lp-toggle::after {
+        /* Burger Menu */
+        #navbar .burger {
             display: none;
-        }
-
-        /* Tambahkan arrow custom */
-        .lp-toggle {
-            position: relative;
-            padding-right: 20px;
-        }
-
-        .lp-toggle::before {
-            content: "▾";
-            /* Bisa diganti SVG */
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-45%);
-            font-size: 12px;
-        }
-
-        /* Style dropdown */
-        .lp-dropdown-menu {
-            border-radius: 10px;
-            padding: 6px 0;
-        }
-
-        .lp-item {
-            font-weight: 500;
-        }
-
-        .lp-item:hover {
-            background-color: #0d6efd15;
-        }
-
-        /* Default hidden state */
-        .lp-dropdown {
-            position: absolute;
-            opacity: 0;
-            top: 100%;
-            right: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            border-radius: 10px;
-            background: white;
-            min-width: 200px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, .2);
-            padding: 10px;
-            list-style: none;
-        }
-
-        .dropdown-toggle {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 1.75rem;
             cursor: pointer;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: background 0.3s;
+            color: #000;
+            transition: all 0.3s ease;
+            /* Override Bootstrap button */
+            background: none;
+            border: none;
+            padding: 0;
         }
 
-        .dropdown-toggle:hover {
-            background: #f0f0f0;
+        #navbar .burger:hover {
+            color: #2a85fb;
         }
 
-        .dropdown-arrow12 {
-            width: 0;
-            height: 0;
-            border-left: 6px solid transparent;
-            border-right: 6px solid transparent;
-            border-top: 6px solid var(--text-dark);
-            transition: transform 0.3s;
-        }
-
-        .dropdown.active .dropdown-arrow12 {
-            transform: rotate(180deg);
-        }
-
-
-        /* Saat aktif oleh Bootstrap */
-        .lp-dropdown.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            min-width: 200px;
-            padding: 10px;
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(-10px);
             transition: all 0.3s ease;
         }
 
-        .dropdown.active .dropdown-menu {
+        .mobile-menu-overlay.active {
             opacity: 1;
             visibility: visible;
-            transform: translateY(5px);
-        }
-
-        .dropdown-item {
-            padding: 12px 16px;
-            border-radius: 5px;
-            transition: background 0.3s;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .dropdown-item:hover {
-            background: #f0f0f0;
         }
 
         /* Hero Section */
@@ -260,7 +196,7 @@
 
         .container {
             max-width: 1200px;
-            margin: 50px 50px -35px 111px;
+            margin: 80px 50px 50px 50px;
             padding: 0 10px;
             justify-self: center;
         }
@@ -629,12 +565,12 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .nav-menu {
-                gap: 10px;
+            #navbar .nav-menu {
+                gap: 15px;
             }
 
-            .nav-link {
-                font-size: 18px;
+            #navbar .nav-link {
+                font-size: 1.125rem;
                 padding: 8px 15px;
             }
 
@@ -652,14 +588,48 @@
         }
 
         @media (max-width: 768px) {
-            .nav-container {
-                flex-wrap: wrap;
-                gap: 20px;
+            #navbar .nav-container {
+                padding: 8px 20px;
             }
 
-            .hero-title {
-                font-size: 36px;
-                left: 20px;
+            #navbar .logo-text {
+                font-size: 1.25rem;
+            }
+
+            #navbar .nav-menu {
+                position: fixed;
+                top: 74px;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 74px);
+                background: white;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 30px;
+                padding: 50px 20px;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+                overflow-y: auto;
+                /* Override Bootstrap nav */
+                z-index: 1000;
+            }
+
+            #navbar .nav-menu.active {
+                transform: translateX(0);
+            }
+
+            #navbar .nav-link {
+                font-size: 1.5rem;
+                padding: 15px 30px;
+                width: 100%;
+                text-align: center;
+                border-radius: 10px;
+            }
+
+            #navbar .burger {
+                display: flex;
             }
 
             .hero-circle,
@@ -695,18 +665,69 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        @media (max-width: 480px) {
+            #navbar .nav-container {
+                padding: 8px 15px;
+                gap: 200px;
+            }
+
+            #navbar .logo-text {
+                font-size: 1rem;
+            }
+
+            #navbar .nav-menu {
+                top: 66px;
+                height: calc(100vh - 66px);
+                padding: 30px 15px;
+                gap: 20px;
+            }
+
+            #navbar .nav-link {
+                font-size: 1.25rem;
+                padding: 12px 20px;
+            }
+
+
+
+            footer {
+                text-align: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .footer-top-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .card-overlay {
+                background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.6) 100%);
+                /* Lebih gelap lagi untuk HP kecil */
+            }
+        }
     </style>
 </head>
 
 <body>
     <!-- Navigation -->
-    <nav class="navbarr" id="navbar">
-        <div class="nav-containerr">
-            <div class="logo-containerr">
-                <img src="img/1.png" alt="Logo HMJ TI" class="logo-img" />
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <img src="img/1.png" alt="Logo HMJ TI" class="logo-img">
                 <span class="logo-text">HMJ-TI</span>
             </div>
-            <ul class="nav-menu">
+            <button id="burger" class="burger" type="button">
+                <i class="ph ph-list"></i>
+            </button>
+            <ul id="nav-menu" class="nav-menu">
                 <li class="nav-item">
                     <a href="index.html" class="nav-link" data-section="home">Beranda</a>
                 </li>
@@ -723,10 +744,15 @@
                     <a href="news.html" class="nav-link active" data-section="news">News</a>
                 </li>
                 <li class="nav-item">
-                    <a href="kontak.html" class="nav-link" data-section="contact">Kontak</a>
+                    <a href="kontak.html" class="nav-link" data-section="news">Kontak</a>
+                </li>
             </ul>
         </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+
 
     <!--  -->
     <section class="hero">
@@ -912,19 +938,21 @@
             });
         });
 
-        // Dropdown functionality
-        const dropdown = document.querySelector('.dropdown');
-        const dropdownToggle = document.querySelector('.dropdown-toggle');
-
-        dropdownToggle.addEventListener('click', () => {
-            dropdown.classList.toggle('active');
+        // Burger menu toggle
+        const burger = document.getElementById('burger');
+        const navMenu = document.getElementById('nav-menu');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        burger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
+            burger.classList.toggle('active');
         });
 
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!dropdown.contains(e.target)) {
-                dropdown.classList.remove('active');
-            }
+        // Close mobile menu when clicking overlay
+        mobileOverlay.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            burger.classList.remove('active');
         });
     </script>
 </body>

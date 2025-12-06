@@ -15,6 +15,14 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Orbitron:wght@400;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Orbitron:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
 
     <style>
         * {
@@ -50,9 +58,9 @@
             top: 0;
             left: 0;
             right: 0;
-            background: white;
+            background: var(--light-bg);
             z-index: 1000;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
@@ -67,7 +75,7 @@
             margin: 0 auto;
             display: flex;
             align-items: center;
-            gap: 290px;
+            justify-content: space-between;
             padding: 8px 32px;
         }
 
@@ -85,7 +93,8 @@
 
         .logo-text {
             font-family: 'Orbitron', sans-serif;
-            font-size: 24px;
+            font-size: 1.5rem;
+            /* 24px */
             color: var(--text-dark);
             font-weight: 300;
         }
@@ -96,6 +105,8 @@
             gap: 20px;
             list-style: none;
             flex: 1;
+            justify-content: flex-end;
+            transition: var(--transition);
         }
 
         .nav-item {
@@ -105,10 +116,11 @@
         .nav-link {
             text-decoration: none;
             color: var(--text-dark);
-            font-size: 20px;
+            font-size: 1.25rem;
+            /* 20px */
             padding: 10px 20px;
             border-radius: 200px;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             display: inline-block;
         }
 
@@ -119,78 +131,30 @@
 
         .nav-link.active {
             background: var(--primary-blue);
-            color: white;
+            color: var(--text-light);
         }
 
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-toggle {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        /* Burger Menu */
+        .burger {
+            display: none;
+            font-size: 1.75rem;
+            /* 28px */
             cursor: pointer;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: background 0.3s;
+            color: var(--text-dark);
+            transition: var(--transition);
         }
 
-        .dropdown-toggle:hover {
-            background: #f0f0f0;
-        }
-
-        .dropdown-arrow {
-            width: 0;
-            height: 0;
-            border-left: 6px solid transparent;
-            border-right: 6px solid transparent;
-            border-top: 6px solid var(--text-dark);
-            transition: transform 0.3s;
-        }
-
-        .dropdown.active .dropdown-arrow {
-            transform: rotate(180deg);
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            min-width: 200px;
-            padding: 10px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-        }
-
-        .dropdown.active .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(5px);
-        }
-
-        .dropdown-item {
-            padding: 12px 16px;
-            border-radius: 5px;
-            transition: background 0.3s;
-            cursor: pointer;
-        }
-
-        .dropdown-item:hover {
-            background: #f0f0f0;
+        .burger:hover {
+            color: var(--primary-blue);
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 40px;
+            box-sizing: border-box;
+            /* Menambahkan untuk konsistensi */
         }
-
 
         /* Hero Section */
         .hero-section {
@@ -201,6 +165,8 @@
             padding: 200px 100px 50px 100px;
             position: relative;
             margin-bottom: 0;
+            box-sizing: border-box;
+            /* Memastikan padding tidak mempengaruhi ukuran */
         }
 
         .program-label {
@@ -215,10 +181,14 @@
             align-items: flex-start;
             gap: 50px;
             position: relative;
+            flex-wrap: wrap;
+            /* Agar responsif di layar kecil */
         }
 
         .hero-left {
             flex: 1;
+            min-width: 300px;
+            /* Minimal lebar agar tidak terlalu kecil */
         }
 
         .logo-badge {
@@ -276,6 +246,9 @@
 
         .hero-right {
             flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            /* Tengahkan gambar di mobile */
         }
 
         .hero-image {
@@ -284,7 +257,9 @@
             border-radius: 55px;
             background: linear-gradient(135deg, #4F9DFF 0%, #2a85fb 100%);
             background-image: url("img/s1.png");
-            object-fit: cover;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         /* Description Section */
@@ -297,6 +272,8 @@
             border-bottom-right-radius: 0px;
             border-bottom-left-radius: 0px;
             margin-top: 1px;
+            box-sizing: border-box;
+            /* Memastikan padding konsisten */
         }
 
         .description-text {
@@ -310,6 +287,8 @@
             display: flex;
             gap: 15px;
             justify-content: center;
+            flex-wrap: wrap;
+            /* Agar tombol stack di layar kecil */
         }
 
         .btn {
@@ -322,6 +301,8 @@
             transition: all 0.3s;
             text-decoration: none;
             display: inline-block;
+            min-width: 120px;
+            /* Minimal lebar tombol */
         }
 
         .btn-back {
@@ -528,6 +509,315 @@
             font-size: 12px;
             color: var(--text-dark);
         }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .nav-menu {
+                gap: 15px;
+            }
+
+            .nav-link {
+                font-size: 1.125rem;
+                /* 18px */
+                padding: 8px 15px;
+            }
+
+
+
+            .hero-section {
+                padding: 150px 80px 40px 80px;
+                /* Kurangi padding */
+            }
+
+            .program-label {
+                font-size: 28px;
+                margin-bottom: 40px;
+            }
+
+            .hero-content {
+                gap: 40px;
+            }
+
+            .hero-title {
+                font-size: 42px;
+            }
+
+            .hero-image {
+                width: 200px;
+                height: 200px;
+            }
+
+            .description-section {
+                padding: 60px 120px;
+                /* Kurangi padding */
+            }
+
+            .description-text {
+                font-size: 22px;
+                line-height: 32px;
+            }
+
+            .action-buttons {
+                gap: 12px;
+            }
+
+            .btn {
+                padding: 8px 20px;
+                font-size: 15px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 8px 20px;
+            }
+
+            .logo-text {
+                font-size: 1.25rem;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 74px;
+                /* Adjust based on navbar height */
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 74px);
+                background: var(--light-bg);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 30px;
+                padding: 50px 20px;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+                overflow-y: auto;
+            }
+
+            .nav-menu.active {
+                transform: translateX(0);
+            }
+
+            .nav-link {
+                font-size: 1.5rem;
+                padding: 15px 30px;
+                width: 100%;
+                text-align: center;
+                border-radius: 10px;
+            }
+
+            .burger {
+                display: flex;
+            }
+
+
+
+            .hero-section {
+                padding: 120px 50px 30px 50px;
+                border-bottom-left-radius: 30px;
+                /* Kurangi radius untuk mobile */
+                border-bottom-right-radius: 30px;
+            }
+
+            .hero-title {
+                font-size: 36px;
+                left: 20px;
+            }
+
+            .hero-circle,
+            .hero-logo {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 40px;
+            }
+
+            .section-description {
+                font-size: 22px;
+            }
+
+            .program-label {
+                font-size: 24px;
+                margin-bottom: 30px;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                /* Stack vertikal */
+                gap: 30px;
+                align-items: center;
+                /* Tengahkan konten */
+            }
+
+            .hero-left {
+                text-align: center;
+                /* Tengahkan teks */
+            }
+
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .badge {
+                font-size: 14px;
+                padding: 6px 16px;
+            }
+
+            .hero-image {
+                width: 180px;
+                height: 180px;
+                border-radius: 40px;
+            }
+
+            .description-section {
+                padding: 50px 40px;
+                border-top-left-radius: 40px;
+                /* Kurangi radius */
+                border-top-right-radius: 40px;
+            }
+
+            .description-text {
+                font-size: 20px;
+                line-height: 28px;
+                margin-bottom: 40px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                /* Stack tombol vertikal */
+                align-items: center;
+                gap: 10px;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 200px;
+                padding: 12px 25px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 8px 15px;
+            }
+
+            .logo-text {
+                font-size: 1rem;
+            }
+
+            .nav-menu {
+                top: 66px;
+                /* Adjust based on navbar height */
+                height: calc(100vh - 66px);
+                padding: 30px 15px;
+                gap: 20px;
+            }
+
+            .nav-link {
+                font-size: 1.25rem;
+                padding: 12px 20px;
+            }
+
+
+
+            .hero-section {
+                padding: 100px 30px 20px 30px;
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+            }
+
+            .program-label {
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+
+            .logo-badge {
+                width: 80px;
+                height: 90px;
+                padding: 12px;
+                margin-bottom: 30px;
+            }
+
+            .logo-circle {
+                width: 100px;
+                height: 100px;
+            }
+
+            .logo-inner {
+                width: 140px;
+                height: 130px;
+                background-size: 100px;
+            }
+
+            .hero-title {
+                font-size: 28px;
+                margin-bottom: 15px;
+            }
+
+            .badge {
+                font-size: 12px;
+                padding: 5px 12px;
+                margin-bottom: 15px;
+            }
+
+            .hero-image {
+                width: 150px;
+                height: 150px;
+                border-radius: 30px;
+            }
+
+            .description-section {
+                padding: 40px 20px;
+                border-top-left-radius: 30px;
+                border-top-right-radius: 30px;
+            }
+
+            .description-text {
+                font-size: 18px;
+                line-height: 26px;
+                margin-bottom: 30px;
+            }
+
+            .action-buttons {
+                gap: 8px;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 14px;
+                min-width: 100px;
+            }
+
+            footer {
+                text-align: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .footer-top-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .card-overlay {
+                background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.6) 100%);
+                /* Lebih gelap lagi untuk HP kecil */
+            }
+        }
     </style>
 </head>
 
@@ -539,7 +829,10 @@
                 <img src="img/1.png" alt="Logo HMJ TI" class="logo-img">
                 <span class="logo-text">HMJ-TI</span>
             </div>
-            <ul class="nav-menu">
+            <button id="burger" class="burger" type="button">
+                <i class="ph ph-list"></i>
+            </button>
+            <ul id="nav-menu" class="nav-menu">
                 <li class="nav-item">
                     <a href="index.html" class="nav-link" data-section="home">Beranda</a>
                 </li>
@@ -562,6 +855,8 @@
         </div>
     </nav>
 
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
 
     <!--  -->
     <!-- Hero Section -->
@@ -753,19 +1048,20 @@
             });
         });
 
-        // Dropdown functionality
-        const dropdown = document.querySelector('.dropdown');
-        const dropdownToggle = document.querySelector('.dropdown-toggle');
-
-        dropdownToggle.addEventListener('click', () => {
-            dropdown.classList.toggle('active');
+        // burger menu toggle
+        const burger = document.getElementById('burger');
+        const navMenu = document.getElementById('nav-menu');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        burger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');  // Ubah dari 'nav-active' ke 'active' agar sesuai CSS
+            mobileOverlay.classList.toggle('active');
+            burger.classList.toggle('active');  // Tambahkan efek pada burger sendiri
         });
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!dropdown.contains(e.target)) {
-                dropdown.classList.remove('active');
-            }
+        // Close mobile menu when clicking overlay
+        mobileOverlay.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            burger.classList.remove('active');
         });
 
         // Hover effect untuk tombol
